@@ -36,8 +36,8 @@
           <span class="badge bg-warning text-dark">Pending</span>
         {% endif %}
         <div class="mt-2">
-          <a href="#"
-             class="btn btn-sm btn-outline-success">Complete</a>
+          <a href="{% url 'todo:task-toggle-status' pk=task.pk %}"
+             class="btn btn-sm btn-outline-success">{{ task.is_completed|yesno:"Undo,Complete" }}</a>
           <a href="{% url 'todo:task-update' pk=task.pk %}"
              class="btn btn-sm btn-outline-warning">Update</a>
           <a href="{% url 'todo:task-delete' pk=task.pk %}"

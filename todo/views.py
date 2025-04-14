@@ -1,6 +1,8 @@
-from django.urls import reverse_lazy
+from django.db.models import F
+from django.shortcuts import redirect
+from django.urls import reverse_lazy, reverse
 from django.utils.timezone import now
-from django.views import generic
+from django.views import generic, View
 
 from todo.forms import TaskForm, TagForm
 from todo.models import Task, Tag
@@ -33,6 +35,12 @@ class TaskUpdateView(generic.UpdateView):
     model = Task
     form_class = TaskForm
     success_url = reverse_lazy("todo:task-list")
+
+
+class ToggleTaskStatusView(View):
+    def get(self, request, pk: int):
+        Task.objects.filter(pk=pk).update(is_completed=~F("is_completed"))
+        return redirect(reverse("todo:task-list"))
 
 
 class TagListView(generic.ListView):
