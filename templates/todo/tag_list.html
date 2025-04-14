@@ -66,27 +66,27 @@
   </div>
 
   <script>
-      const tagModal = document.getElementById('tagModal');
-      tagModal.addEventListener('show.bs.modal', event => {
+      const tagModal = document.getElementById("tagModal");
+      tagModal.addEventListener("show.bs.modal", event => {
           const button = event.relatedTarget;
-          const tagName = button.getAttribute('data-tag-name');
-          const tagId = button.getAttribute('data-tag-id');
+          const tagName = button.getAttribute("data-tag-name");
+          const tagId = button.getAttribute("data-tag-id");
 
-          const modalTitle = tagModal.querySelector('.modal-title');
-          const nameInput = tagModal.querySelector('#tagNameInput');
-          const idInput = tagModal.querySelector('#tagIdInput');
+          const modalTitle = tagModal.querySelector(".modal-title");
+          const nameInput = tagModal.querySelector("#tagNameInput");
+          const idInput = tagModal.querySelector("#tagIdInput");
           const tagForm = tagModal.querySelector("#tagForm");
 
           if (tagId) {
               tagForm.action = `/tags/${tagId}/update/`
-              modalTitle.textContent = 'Edit Tag';
+              modalTitle.textContent = "Edit Tag";
               nameInput.value = tagName;
               idInput.value = tagId;
           } else {
               tagForm.action = "{% url 'todo:tag-create' %}";
-              modalTitle.textContent = 'Add Tag';
-              nameInput.value = '';
-              idInput.value = '';
+              modalTitle.textContent = "Add Tag";
+              nameInput.value = "";
+              idInput.value = "";
           }
       });
   </script>
