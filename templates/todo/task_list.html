@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% for task in task_list %}
+    {% include 'includes/task.html' with task=task %}
+  {% endfor %}
+
+{% endblock %}
