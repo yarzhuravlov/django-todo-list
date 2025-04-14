@@ -14,3 +14,6 @@ class Task(models.Model):
     deadline = models.DateTimeField(null=True)
     is_completed = models.BooleanField(default=False)
     tags = models.ManyToManyField(Tag, related_name="tasks")
+
+    class Meta:
+        ordering = ["is_completed", "-created_at"]
