@@ -40,7 +40,7 @@
              class="btn btn-sm btn-outline-success">Complete</a>
           <a href="{% url 'todo:task-update' pk=task.pk %}"
              class="btn btn-sm btn-outline-warning">Update</a>
-          <a href="#"
+          <a href="{% url 'todo:task-delete' pk=task.pk %}"
              class="btn btn-sm btn-outline-danger">Delete</a>
         </div>
       </div>
