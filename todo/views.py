@@ -22,3 +22,9 @@ class TaskListView(generic.ListView):
 class TaskCreateView(generic.CreateView):
     form_class = TaskForm
     success_url = reverse_lazy("todo:task-list")
+
+
+class TaskUpdateView(generic.UpdateView):
+    model = Task
+    form_class = TaskForm
+    success_url = reverse_lazy("todo:task-list")
