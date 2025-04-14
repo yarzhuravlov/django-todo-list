@@ -23,3 +23,25 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         exclude = ["created_at", "is_completed"]
+
+
+class TagForm(forms.ModelForm):
+    id = forms.IntegerField(
+        widget=forms.NumberInput(
+            attrs={
+                "type": "hidden",
+                "id": "tagIdInput",
+            }
+        ),
+    )
+    name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "id": "tagNameInput",
+            },
+        )
+    )
+
+    class Meta:
+        model = Tag
+        fields = "__all__"
