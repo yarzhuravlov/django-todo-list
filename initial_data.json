@@ -1,0 +1,138 @@
+[
+  {
+    "model": "todo.tag",
+    "pk": 1,
+    "fields": { "name": "Work" }
+  },
+  {
+    "model": "todo.tag",
+    "pk": 2,
+    "fields": { "name": "Personal" }
+  },
+  {
+    "model": "todo.tag",
+    "pk": 3,
+    "fields": { "name": "Urgent" }
+  },
+  {
+    "model": "todo.tag",
+    "pk": 4,
+    "fields": { "name": "Shopping" }
+  },
+  {
+    "model": "todo.tag",
+    "pk": 5,
+    "fields": { "name": "Ideas" }
+  },
+
+  {
+    "model": "todo.task",
+    "pk": 1,
+    "fields": {
+      "content": "Finish project report",
+      "created_at": "2025-04-10T10:00:00Z",
+      "deadline": "2025-04-15T17:00:00Z",
+      "is_completed": false,
+      "tags": [1, 3]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 2,
+    "fields": {
+      "content": "Buy groceries",
+      "created_at": "2025-04-11T14:30:00Z",
+      "deadline": "2025-04-12T18:00:00Z",
+      "is_completed": true,
+      "tags": [2, 4]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 3,
+    "fields": {
+      "content": "Call plumber",
+      "created_at": "2025-04-09T08:45:00Z",
+      "deadline": "2025-04-10T09:00:00Z",
+      "is_completed": true,
+      "tags": [2, 3]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 4,
+    "fields": {
+      "content": "Draft blog post on Django tips",
+      "created_at": "2025-04-07T13:15:00Z",
+      "deadline": null,
+      "is_completed": false,
+      "tags": [1, 5]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 5,
+    "fields": {
+      "content": "Plan weekend trip",
+      "created_at": "2025-04-06T11:00:00Z",
+      "deadline": "2025-04-20T20:00:00Z",
+      "is_completed": false,
+      "tags": [2]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 6,
+    "fields": {
+      "content": "Update LinkedIn profile",
+      "created_at": "2025-04-05T16:45:00Z",
+      "deadline": null,
+      "is_completed": true,
+      "tags": [1]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 7,
+    "fields": {
+      "content": "Organize photo album",
+      "created_at": "2025-04-04T09:30:00Z",
+      "deadline": null,
+      "is_completed": false,
+      "tags": [2, 5]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 8,
+    "fields": {
+      "content": "Refactor legacy code",
+      "created_at": "2025-04-03T13:00:00Z",
+      "deadline": "2025-04-18T23:59:00Z",
+      "is_completed": false,
+      "tags": [1, 3]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 9,
+    "fields": {
+      "content": "Book dentist appointment",
+      "created_at": "2025-04-02T15:10:00Z",
+      "deadline": "2025-04-13T10:00:00Z",
+      "is_completed": true,
+      "tags": [2]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 10,
+    "fields": {
+      "content": "Brainstorm app ideas",
+      "created_at": "2025-04-01T10:00:00Z",
+      "deadline": null,
+      "is_completed": false,
+      "tags": [5]
+    }
+  }
+]

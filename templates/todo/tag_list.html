@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Tags</h2>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#tagModal" data-tag-name="" data-tag-id="">
+      + Add Tag
+    </button>
+  </div>
+
+  {% if tag_list %}
+    <div class="list-group">
+      {% for tag in tag_list %}
+        <div
+            class="list-group-item d-flex justify-content-between align-items-center">
+          <span>{{ tag.name }}</span>
+          <div>
+            <button
+                type="button"
+                class="btn btn-sm btn-outline-secondary"
+                data-bs-toggle="modal"
+                data-bs-target="#tagModal"
+                data-tag-name="{{ tag.name }}"
+                data-tag-id="{{ tag.id }}">
+              Edit
+            </button>
+            <a class="btn btn-sm btn-outline-danger"
+               href="{% url 'todo:tag-delete' pk=tag.id %}">
+              Delete
+            </a>
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-muted">No tags yet.</p>
+  {% endif %}
+
+  <div class="modal fade" id="tagModal" tabindex="-1"
+       aria-labelledby="tagModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form method="POST" id="tagForm"
+              action="{% url 'todo:tag-create' %}">
+          {% csrf_token %}
+          <div class="modal-header">
+            <h5 class="modal-title" id="tagModalLabel">Add Tag</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            {{ tag_form|crispy }}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Cancel
+            </button>
+            <input type="submit" class="btn btn-primary" value="Save Tag">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+      const tagModal = document.getElementById("tagModal");
+      tagModal.addEventListener("show.bs.modal", event => {
+          const button = event.relatedTarget;
+          const tagName = button.getAttribute("data-tag-name");
+          const tagId = button.getAttribute("data-tag-id");
+
+          const modalTitle = tagModal.querySelector(".modal-title");
+          const nameInput = tagModal.querySelector("#tagNameInput");
+          const idInput = tagModal.querySelector("#tagIdInput");
+          const tagForm = tagModal.querySelector("#tagForm");
+
+          if (tagId) {
+              tagForm.action = `/tags/${tagId}/update/`
+              modalTitle.textContent = "Edit Tag";
+              nameInput.value = tagName;
+              idInput.value = tagId;
+          } else {
+              tagForm.action = "{% url 'todo:tag-create' %}";
+              modalTitle.textContent = "Add Tag";
+              nameInput.value = "";
+              idInput.value = "";
+          }
+      });
+  </script>
+{% endblock %}
